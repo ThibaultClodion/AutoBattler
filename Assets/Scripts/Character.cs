@@ -5,32 +5,92 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
+    
+    private int teamNumber;
 
-    private GameObject ennemy;
 
-    private void Awake()
+    public void Init(int teamNumber)
     {
+        this.teamNumber = teamNumber;
         agent.speed = characterData.speed;
         agent.acceleration = characterData.acceleration;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Update()
     {
-        if(gameObject.tag == "Ally")
-        {
-            ennemy = GameObject.FindGameObjectWithTag("Ennemy");
-        }
-        else if(gameObject.tag == "Ennemy")
-        {
-            ennemy = GameObject.FindGameObjectWithTag("Ally");
-        }
-
+        NeutralBehaviour();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void NeutralBehaviour()
     {
-        agent.SetDestination(ennemy.transform.position);
+        //TODO - modify this to command patterns
+
+        //The character run towards the nearest ennemy to attack him
+        agent.SetDestination(FindNearestEnnemyToAPoint(transform.position).transform.position);
+    }
+
+    private void OffensiveBehaviour()
+    {
+        //The character run towards the nearest king to attack him
+        agent.SetDestination(FindNearestKing().transform.position);
+    }
+
+    private void DefensiveBehaviour()
+    {
+        //The character run towards the nearest ennemy from his king to attack him
+        agent.SetDestination(FindNearestEnnemyToAPoint(GetAllyKing().transform.position).transform.position);
+    }
+
+    private Character FindNearestEnnemyToAPoint(Vector3 point)
+    {
+        Character nearestEnnemy = null;
+
+        foreach(Character character in GameManager.characters)
+        {
+            //Filter ennemies
+            if(character.teamNumber != teamNumber)
+            {
+                if (nearestEnnemy == null)
+                {
+                    nearestEnnemy = character;
+                }
+
+                else if (Vector3.Distance(point, character.transform.position) <
+                Vector3.Distance(point, nearestEnnemy.transform.position))
+                {
+                    nearestEnnemy = character;
+                }
+            }
+        }
+        return nearestEnnemy;
+    }
+
+    private Character FindNearestKing()
+    {
+        Character nearestking = null;
+
+        foreach (Character king in GameManager.kings)
+        {
+            //Filter ennemies
+            if (king.teamNumber != teamNumber)
+            {
+                if (nearestking == null)
+                {
+                    nearestking = king;
+                }
+
+                else if (Vector3.Distance(transform.position, king.transform.position) <
+                Vector3.Distance(transform.position, nearestking.transform.position))
+                {
+                    nearestking = king;
+                }
+            }
+        }
+        return nearestking;
+    }
+
+    private Character GetAllyKing()
+    {
+        return GameManager.kings[teamNumber];
     }
 }
