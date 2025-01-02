@@ -4,56 +4,33 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static List<Character> characters = new List<Character>();
-
-    private int numberOfTeam = 2;   //In case we want more teams one day
     public static Character[] kings;
 
-    [SerializeField] private Character allyPrefab;
-    [SerializeField] private Character ennemyPrefab;
+    [SerializeField] private GameObject[] levels;
+    [SerializeField] private int numberOfTeam = 2;   //In case we want more teams one day
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         kings = new Character[numberOfTeam];
-        CombatTest();
+
+        Instantiate(levels[0]);  //Todo : make the succession of level system
     }
 
-    private void CombatTest()
+    public static void InstantiateUnit(Character character, Vector3 position, int teamNumber, bool isKing)
     {
-        for(int i = 0; i < 10; i++)
+        Character unit = Instantiate(character, position, Quaternion.identity);
+        unit.Init(teamNumber, new NeutralBehaviour());
+        characters.Add(unit);
+
+        if (isKing)
         {
-            Character blue = Instantiate(allyPrefab, GetRandomVector3(-40,40), Quaternion.identity);
-            blue.Init(0);
-            characters.Add(blue);
-
-            if(i == 0)
-            {
-                ChangeKing(blue, 0);
-                blue.transform.localScale = Vector3.one * 2;
-            }
-        }
-
-        for (int i = 0; i < 4; i++)
-        {
-            Character red = Instantiate(ennemyPrefab, GetRandomVector3(-40, 40), Quaternion.identity);
-            red.Init(1);
-            characters.Add(red);
-
-            if (i == 0)
-            {
-                ChangeKing(red, 1);
-                red.transform.localScale = Vector3.one * 2;
-            }
+            ChangeKing(unit);
         }
     }
 
-    private Vector3 GetRandomVector3(float min, float max)
+    public static void ChangeKing(Character character)
     {
-        return new Vector3(Random.Range(min, max), 1, Random.Range(min, max));
-    }
-
-    private void ChangeKing(Character character, int teamNumber)
-    {
-        kings[teamNumber] = character;
+        kings[character.teamNumber] = character;
+        character.transform.localScale = Vector3.one * 2;   //Todo : change this to a crown over character head
     }
 }

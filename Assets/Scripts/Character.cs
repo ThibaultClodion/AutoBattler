@@ -1,96 +1,72 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum Behaviour
+{
+    Neutral,
+    Offensive,
+    Defensive
+}
+
 public class Character : MonoBehaviour
 {
+    //Bot settings
+    [HideInInspector] public bool isABot;
+    [HideInInspector] public int teamNumber;
+    [HideInInspector] public bool isKing;
+    [HideInInspector] public Behaviour behaviour;
+
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
-    
-    private int teamNumber;
+    private FightBehaviour fightBehaviour;
 
+    private void Start()
+    {
+        if (isABot)
+        {
+            SelfInit(); //Bot can initialize themselves (so it's easy to create levels)
+        }
+    }
 
-    public void Init(int teamNumber)
+    private void SelfInit()
+    {
+        GameManager.characters.Add(this);
+
+        //Change his fighting behaviour
+        if (behaviour == Behaviour.Neutral)
+        {
+            Init(teamNumber, new NeutralBehaviour());
+        }
+        else if (behaviour == Behaviour.Defensive)
+        {
+            Init(teamNumber, new DefensiveBehaviour());
+        }
+        else
+        {
+            Init(teamNumber, new OffensiveBehaviour());
+        }
+
+        //Change the king of the team
+        if (isKing)
+        {
+            GameManager.ChangeKing(this);
+        }
+    }
+
+    public void Init(int teamNumber, FightBehaviour fightBehaviour)
     {
         this.teamNumber = teamNumber;
+        this.fightBehaviour = fightBehaviour;
+
         agent.speed = characterData.speed;
         agent.acceleration = characterData.acceleration;
     }
 
     private void Update()
     {
-        NeutralBehaviour();
-    }
-
-    private void NeutralBehaviour()
-    {
-        //TODO - modify this to command patterns
-
-        //The character run towards the nearest ennemy to attack him
-        agent.SetDestination(FindNearestEnnemyToAPoint(transform.position).transform.position);
-    }
-
-    private void OffensiveBehaviour()
-    {
-        //The character run towards the nearest king to attack him
-        agent.SetDestination(FindNearestKing().transform.position);
-    }
-
-    private void DefensiveBehaviour()
-    {
-        //The character run towards the nearest ennemy from his king to attack him
-        agent.SetDestination(FindNearestEnnemyToAPoint(GetAllyKing().transform.position).transform.position);
-    }
-
-    private Character FindNearestEnnemyToAPoint(Vector3 point)
-    {
-        Character nearestEnnemy = null;
-
-        foreach(Character character in GameManager.characters)
+        if (fightBehaviour != null)
         {
-            //Filter ennemies
-            if(character.teamNumber != teamNumber)
-            {
-                if (nearestEnnemy == null)
-                {
-                    nearestEnnemy = character;
-                }
-
-                else if (Vector3.Distance(point, character.transform.position) <
-                Vector3.Distance(point, nearestEnnemy.transform.position))
-                {
-                    nearestEnnemy = character;
-                }
-            }
+            fightBehaviour.Execute(agent, this);
         }
-        return nearestEnnemy;
-    }
-
-    private Character FindNearestKing()
-    {
-        Character nearestking = null;
-
-        foreach (Character king in GameManager.kings)
-        {
-            //Filter ennemies
-            if (king.teamNumber != teamNumber)
-            {
-                if (nearestking == null)
-                {
-                    nearestking = king;
-                }
-
-                else if (Vector3.Distance(transform.position, king.transform.position) <
-                Vector3.Distance(transform.position, nearestking.transform.position))
-                {
-                    nearestking = king;
-                }
-            }
-        }
-        return nearestking;
-    }
-
-    private Character GetAllyKing()
-    {
-        return GameManager.kings[teamNumber];
     }
 }
