@@ -602,9 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a85c5ede7a6f40807796cf4fadddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 6429811293575842503, guid: efca7d1e93ae1a948849245fae0f5274, type: 3}
-  numberOfTeam: 2
 --- !u!4 &1915816508
 Transform:
   m_ObjectHideFlags: 0
@@ -669,7 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005d91d4c8e60f3488523c6993b18194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  units:
+  payableUnits:
   - {fileID: 1714906918659492430, guid: 671b20c8f6246e749a421274d6e69449, type: 3}
   - {fileID: 5569461361556852381, guid: b41a71a3b4fd5bf4c86ec0430d1800e0, type: 3}
   unitButtonPrefab: {fileID: 3663983900943785512, guid: 4d7af910ed99ce14ba688b9c44068bed, type: 3}
@@ -749,6 +746,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3359675611236447515, guid: 3e699a7fd3b6bb24b9a48d48648d919f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744412835909099262, guid: 3e699a7fd3b6bb24b9a48d48648d919f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6857040045912715902, guid: 3e699a7fd3b6bb24b9a48d48648d919f, type: 3}

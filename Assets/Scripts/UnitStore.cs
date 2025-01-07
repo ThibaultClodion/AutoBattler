@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 public class UnitStore : MonoBehaviour
 {
-    [SerializeField] private Character[] units;
+    [SerializeField] private Character[] payableUnits;
     private Character selectedUnit;
 
     [SerializeField] private Button unitButtonPrefab;
@@ -14,7 +13,7 @@ public class UnitStore : MonoBehaviour
 
     void Start()
     {
-        selectedUnit = units[0];    // Ensure that one unit is selected
+        selectedUnit = payableUnits[0];    // Ensure that one unit is selected
         CreateUnitButtons();
     }
 
@@ -41,7 +40,7 @@ public class UnitStore : MonoBehaviour
         //Create unit but not if player click on UI
         if (Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            GameManager.InstantiateUnit(selectedUnit, unitVisualisation.transform.position, 0, GameManager.kings[0] == null);
+            GameManager.InstantiateAlly(selectedUnit, unitVisualisation.transform.position, GameManager.kings[0] == null);
         }
     }
 
@@ -57,7 +56,7 @@ public class UnitStore : MonoBehaviour
 
     private void CreateUnitButtons()
     {
-        foreach (Character character in units)
+        foreach (Character character in payableUnits)
         {
             Button unitButton = Instantiate(unitButtonPrefab, transform);
             unitButton.onClick.AddListener(delegate { ChangeSelectedUnit(character); } );
