@@ -52,7 +52,7 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if (fightBehaviour != null)
+        if (fightBehaviour != null && GameManager.canFight)
         {
             fightBehaviour.Execute(agent, this);
         }

@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static List<Character> characters = new List<Character>();
     public static Character[] kings = new Character[2];
+    public static bool canFight;
 
     public static void InstantiateAlly(Character character, Vector3 position, bool isKing)
     {
@@ -33,5 +34,10 @@ public class GameManager : MonoBehaviour
         kings[character.teamNumber] = character;
         kings[character.teamNumber].isKing = true;
         character.transform.localScale = Vector3.one * 2;   //Todo : change this to a crown over character head
+    }
+
+    public static void TweakCanFightValue()
+    {
+        canFight = !canFight;
     }
 }
