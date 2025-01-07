@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         character.Init(teamNumber, fightBehaviour);
         characters.Add(character);
 
-        if (isKing)
+        if(isKing)
         {
             ChangeKing(character);
         }
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public static void ChangeKing(Character character)
     {
-        if (kings[character.teamNumber] != null)
+        if(kings[character.teamNumber] != null)
         {
             kings[character.teamNumber].isKing = false;
         }
