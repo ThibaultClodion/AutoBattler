@@ -17,8 +17,7 @@ public class CharacterEditor : Editor
 
         if (characterScript.isABot) // if is a bot, show other fields
         {
-            characterScript.teamNumber = EditorGUILayout.IntField("Team Number", characterScript.teamNumber);
-            characterScript.isKing = EditorGUILayout.Toggle("Is a King ?", characterScript.isKing);
+            characterScript.isKing = EditorGUILayout.Toggle("Is the King ?", characterScript.isKing);
             characterScript.behaviour = (Behaviour) EditorGUILayout.EnumPopup("Fighting Behaviour", characterScript.behaviour);
         }
     }

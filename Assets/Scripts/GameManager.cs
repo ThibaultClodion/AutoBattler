@@ -4,33 +4,40 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static List<Character> characters = new List<Character>();
-    public static Character[] kings;
+    public static Character[] kings = new Character[2];
+    public static bool canFight;
 
-    [SerializeField] private GameObject[] levels;
-    [SerializeField] private int numberOfTeam = 2;   //In case we want more teams one day
-
-    void Start()
+    public static void InstantiateAlly(Character character, Vector3 position, bool isKing)
     {
-        kings = new Character[numberOfTeam];
-
-        Instantiate(levels[0]);  //Todo : make the succession of level system
+        Character ally = Instantiate(character, position, Quaternion.identity);
+        CharacterInitialization(ally, 0, isKing, new NeutralBehaviour());
     }
 
-    public static void InstantiateUnit(Character character, Vector3 position, int teamNumber, bool isKing)
+    public static void CharacterInitialization(Character character, int teamNumber, bool isKing, FightBehaviour fightBehaviour)
     {
-        Character unit = Instantiate(character, position, Quaternion.identity);
-        unit.Init(teamNumber, new NeutralBehaviour());
-        characters.Add(unit);
+        character.Init(teamNumber, fightBehaviour);
+        characters.Add(character);
 
-        if (isKing)
+        if(isKing)
         {
-            ChangeKing(unit);
+            ChangeKing(character);
         }
     }
 
     public static void ChangeKing(Character character)
     {
+        if(kings[character.teamNumber] != null)
+        {
+            kings[character.teamNumber].isKing = false;
+        }
+
         kings[character.teamNumber] = character;
+        kings[character.teamNumber].isKing = true;
         character.transform.localScale = Vector3.one * 2;   //Todo : change this to a crown over character head
+    }
+
+    public static void TweakCanFightValue()
+    {
+        canFight = !canFight;
     }
 }

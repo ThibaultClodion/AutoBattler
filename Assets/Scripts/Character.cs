@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,10 +13,10 @@ public class Character : MonoBehaviour
 {
     //Bot settings
     [HideInInspector] public bool isABot;
-    [HideInInspector] public int teamNumber;
     [HideInInspector] public bool isKing;
     [HideInInspector] public Behaviour behaviour;
 
+    [NonSerialized] public int teamNumber;
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
     private FightBehaviour fightBehaviour;
@@ -24,32 +25,19 @@ public class Character : MonoBehaviour
     {
         if (isABot)
         {
-            SelfInit(); //Bot can initialize themselves (so it's easy to create levels)
-        }
-    }
-
-    private void SelfInit()
-    {
-        GameManager.characters.Add(this);
-
-        //Change his fighting behaviour
-        if (behaviour == Behaviour.Neutral)
-        {
-            Init(teamNumber, new NeutralBehaviour());
-        }
-        else if (behaviour == Behaviour.Defensive)
-        {
-            Init(teamNumber, new DefensiveBehaviour());
-        }
-        else
-        {
-            Init(teamNumber, new OffensiveBehaviour());
-        }
-
-        //Change the king of the team
-        if (isKing)
-        {
-            GameManager.ChangeKing(this);
+            //Change his fighting behaviour
+            if (behaviour == Behaviour.Neutral)
+            {
+                GameManager.CharacterInitialization(this, 1, isKing, new NeutralBehaviour());
+            }
+            else if (behaviour == Behaviour.Defensive)
+            {
+                GameManager.CharacterInitialization(this, 1, isKing, new DefensiveBehaviour());
+            }
+            else
+            {
+                GameManager.CharacterInitialization(this, 1, isKing, new OffensiveBehaviour());
+            }
         }
     }
 
@@ -64,7 +52,7 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if (fightBehaviour != null)
+        if (fightBehaviour != null && GameManager.canFight)
         {
             fightBehaviour.Execute(agent, this);
         }
