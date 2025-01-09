@@ -13,16 +13,20 @@ public class Character : MonoBehaviour
 {
     //Bot settings
     [HideInInspector] public bool isABot;
-    [HideInInspector] public bool isKing;
     [HideInInspector] public Behaviour behaviour;
 
-    [NonSerialized] public int teamNumber;
+    //Character's Data
+    [HideInInspector] public int teamNumber;  //In case we want to add teams
+    [HideInInspector] public bool isKing;
+
+    //Components
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
     private FightBehaviour fightBehaviour;
 
     private void Start()
     {
+        //Bots init themselves
         if (isABot)
         {
             //Change his fighting behaviour
@@ -41,6 +45,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (fightBehaviour != null && GameManager.canFight)
+        {
+            fightBehaviour.Execute(agent, this);
+        }
+    }
+
     public void Init(int teamNumber, FightBehaviour fightBehaviour)
     {
         this.teamNumber = teamNumber;
@@ -48,14 +60,6 @@ public class Character : MonoBehaviour
 
         agent.speed = characterData.speed;
         agent.acceleration = characterData.acceleration;
-    }
-
-    private void Update()
-    {
-        if (fightBehaviour != null && GameManager.canFight)
-        {
-            fightBehaviour.Execute(agent, this);
-        }
     }
 
     public int GetPrice()

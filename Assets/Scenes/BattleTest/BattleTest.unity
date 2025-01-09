@@ -560,6 +560,10 @@ PrefabInstance:
       propertyPath: unitVisualisation
       value: 
       objectReference: {fileID: 423213526}
+    - target: {fileID: 5474913066075766919, guid: d5b6b153aa5912a4a866999ea74089cf, type: 3}
+      propertyPath: unitVisualization
+      value: 
+      objectReference: {fileID: 423213526}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

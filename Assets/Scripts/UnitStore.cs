@@ -5,37 +5,40 @@ using UnityEngine.UI;
 
 public class UnitStore : MonoBehaviour
 {
-    [Header("Unit")]
+    [Header("Units")]
     [SerializeField] private Character[] payableUnits;
     private Character selectedUnit;
     [SerializeField] private Button unitButtonPrefab;
-    [SerializeField] private GameObject unitVisualisation;
+
+    [Header("Unit Placement")]
+    [SerializeField] private GameObject unitVisualization;
     [SerializeField] private LayerMask unitPlacableLayerMask;
 
     [Header("Money")]
     [SerializeField] private TextMeshProUGUI moneyText;
+    private float money;
 
     void Start()
     {
         selectedUnit = payableUnits[0];    // Ensure that one unit is selected
         CreateUnitButtons();
 
-        GameManager.AddToMoney(500, moneyText); //Todo : make a level scriptable object that give a money amount
+        AddToMoney(500); //Todo : make a level scriptable object that give a money amount
     }
 
     private void OnEnable()
     {
-        if (unitVisualisation != null)
+        if (unitVisualization != null)
         {
-            unitVisualisation.SetActive(true);
+            unitVisualization.SetActive(true);
         }
     }
 
     private void OnDisable()
     {
-        if(unitVisualisation != null)
+        if(unitVisualization != null)
         {
-            unitVisualisation.SetActive(false);
+            unitVisualization.SetActive(false);
         }
     }
 
@@ -43,12 +46,12 @@ public class UnitStore : MonoBehaviour
     {
         MoveUnitVisualisationToMouse();
 
-        //Create unit but not if player click on UI
+        //Prevent unit creation if player click on UI
         if (Input.GetKeyDown(KeyCode.Mouse0) && !EventSystem.current.IsPointerOverGameObject()
-            && GameManager.GetMoney() >= selectedUnit.GetPrice())
+            && money >= selectedUnit.GetPrice())
         {
-            GameManager.AddToMoney(-selectedUnit.GetPrice(), moneyText);
-            GameManager.InstantiateAlly(selectedUnit, unitVisualisation.transform.position, GameManager.kings[0] == null);
+            AddToMoney(-selectedUnit.GetPrice());
+            GameManager.InstantiateAlly(selectedUnit, unitVisualization.transform.position, GameManager.kings[0] == null);
         }
     }
 
@@ -56,9 +59,10 @@ public class UnitStore : MonoBehaviour
     {
         Vector3 mousePosition = Input.mousePosition;
         Ray ray = Camera.main.ScreenPointToRay(mousePosition);
+
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, unitPlacableLayerMask))
         {
-            unitVisualisation.transform.position = hit.point;
+            unitVisualization.transform.position = hit.point;
         }
     }
 
@@ -74,5 +78,11 @@ public class UnitStore : MonoBehaviour
     private void ChangeSelectedUnit(Character character)
     {
         selectedUnit = character;
+    }
+
+    private void AddToMoney(int amount)
+    {
+        money += amount;
+        moneyText.text = "Money : " + money;
     }
 }
