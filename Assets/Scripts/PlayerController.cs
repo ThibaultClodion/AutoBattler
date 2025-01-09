@@ -4,27 +4,33 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Transform mainCamera;
-    [SerializeField] private Transform cameraRotator;
-    [SerializeField] private float cameraZoomSpeed;
-    [SerializeField] private float cameraRotationSpeed;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float rotationSpeed;
 
-    private float zoomValue;
-    private float rotateValue;
+    private Vector2 moveValue;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        mainCamera.position += mainCamera.forward * zoomValue * cameraZoomSpeed * Time.deltaTime;
-        cameraRotator.Rotate(new Vector3(0, -rotateValue * cameraRotationSpeed * Time.deltaTime, 0));
+        if (Input.GetMouseButton(1))
+        {
+            mainCamera.position += mainCamera.forward * moveValue.y * movementSpeed * Time.deltaTime;
+            mainCamera.position += mainCamera.right * moveValue.x * movementSpeed * Time.deltaTime;
+        }
     }
 
-    private void OnZoom(InputValue zoomValue)
+    private void OnMove(InputValue moveValue)
     {
-        this.zoomValue = zoomValue.Get<float>();
+        this.moveValue = moveValue.Get<Vector2>();
     }
 
     private void OnRotate(InputValue rotateValue)
     {
-        this.rotateValue = rotateValue.Get<float>();
+        if (!Input.GetMouseButton(1)) return;
+
+        Vector3 rot = mainCamera.eulerAngles;
+        rot.x -= rotateValue.Get<Vector2>().y * rotationSpeed * Time.deltaTime;
+        rot.y += rotateValue.Get<Vector2>().x * rotationSpeed * Time.deltaTime;
+
+        mainCamera.eulerAngles = rot;
     }
 }
