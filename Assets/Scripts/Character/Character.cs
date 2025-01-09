@@ -57,4 +57,9 @@ public class Character : MonoBehaviour
             fightBehaviour.Execute(agent, this);
         }
     }
+
+    public int GetPrice()
+    {
+        return characterData.price;
+    }
 }

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static List<Character> characters = new List<Character>();
     public static Character[] kings = new Character[2];
     public static bool canFight;
+
+    private static int money;
 
     public static void InstantiateAlly(Character character, Vector3 position, bool isKing)
     {
@@ -36,8 +40,20 @@ public class GameManager : MonoBehaviour
         character.transform.localScale = Vector3.one * 2;   //Todo : change this to a crown over character head
     }
 
+    //Useful to start the game and let unit move
     public static void TweakCanFightValue()
     {
         canFight = !canFight;
+    }
+
+    public static int GetMoney()
+    {
+        return money;
+    }
+
+    public static void AddToMoney(int amount, TextMeshProUGUI moneyText)
+    {
+        money += amount;
+        moneyText.text = "Money : " + money;
     }
 }
