@@ -34,22 +34,22 @@ public class Character : MonoBehaviour
             //Change his fighting behaviour
             if (behaviour == Behaviour.Neutral)
             {
-                GameManager.CharacterInitialization(this, 1, isKing, new NeutralBehaviour());
+                GameManager.Instance.CharacterInitialization(this, 1, isKing, new NeutralBehaviour());
             }
             else if (behaviour == Behaviour.Defensive)
             {
-                GameManager.CharacterInitialization(this, 1, isKing, new DefensiveBehaviour());
+                GameManager.Instance.CharacterInitialization(this, 1, isKing, new DefensiveBehaviour());
             }
             else
             {
-                GameManager.CharacterInitialization(this, 1, isKing, new OffensiveBehaviour());
+                GameManager.Instance.CharacterInitialization(this, 1, isKing, new OffensiveBehaviour());
             }
         }
     }
 
     private void Update()
     {
-        if (fightBehaviour != null && GameManager.canFight)
+        if (fightBehaviour != null && GameManager.Instance.canFight)
         {
             fightBehaviour.Execute(agent, this);
         }
@@ -77,7 +77,10 @@ public class Character : MonoBehaviour
 
         if(actualPV < 0)
         {
-            //TODO - Check if it's king and end game if it is the case
+            if(isKing)
+            {
+                GameManager.Instance.EndFight();
+            }
 
             Destroy(gameObject);
         }

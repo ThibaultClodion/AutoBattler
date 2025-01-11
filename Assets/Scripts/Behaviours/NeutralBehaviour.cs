@@ -18,7 +18,7 @@ public class NeutralBehaviour : FightBehaviour
     {
         Character nearestEnnemy = null;
 
-        foreach (Character otherCharacter in GameManager.characters)
+        foreach (Character otherCharacter in GameManager.Instance.characters)
         {
             //Filter ennemies
             if (otherCharacter.teamNumber != character.teamNumber)

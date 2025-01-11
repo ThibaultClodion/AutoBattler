@@ -51,7 +51,7 @@ public class UnitStore : MonoBehaviour
             && money >= selectedUnit.GetPrice())
         {
             AddToMoney(-selectedUnit.GetPrice());
-            GameManager.InstantiateAlly(selectedUnit, unitVisualization.transform.position, GameManager.kings[0] == null);
+            GameManager.Instance.InstantiateAlly(selectedUnit, unitVisualization.transform.position, GameManager.Instance.kings[0] == null);
         }
     }
 

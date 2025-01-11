@@ -18,7 +18,7 @@ public class OffensiveBehaviour : FightBehaviour
     {
         Character nearestking = null;
 
-        foreach (Character king in GameManager.kings)
+        foreach (Character king in GameManager.Instance.kings)
         {
             //Filter ennemies
             if (king.teamNumber != character.teamNumber)

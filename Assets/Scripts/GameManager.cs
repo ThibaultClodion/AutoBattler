@@ -1,19 +1,22 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static List<Character> characters = new List<Character>();
-    public static Character[] kings = new Character[2];
-    public static bool canFight;
+    [NonSerialized] public List<Character> characters = new List<Character>();
+    [NonSerialized] public Character[] kings = new Character[2];
+    [NonSerialized] public bool canFight;
 
-    public static void InstantiateAlly(Character character, Vector3 position, bool isKing)
+    [SerializeField] private GameObject endPopup;
+
+    public void InstantiateAlly(Character character, Vector3 position, bool isKing)
     {
         Character ally = Instantiate(character, position, Quaternion.identity);
         CharacterInitialization(ally, 0, isKing, new NeutralBehaviour());
     }
 
-    public static void CharacterInitialization(Character character, int teamNumber, bool isKing, FightBehaviour fightBehaviour)
+    public void CharacterInitialization(Character character, int teamNumber, bool isKing, FightBehaviour fightBehaviour)
     {
         character.Init(teamNumber, fightBehaviour);
         characters.Add(character);
@@ -24,7 +27,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static void ChangeKing(Character character)
+    public void ChangeKing(Character character)
     {
         if(kings[character.teamNumber] != null)
         {
@@ -37,8 +40,14 @@ public class GameManager : MonoBehaviour
     }
 
     //Useful to start the game and let unit move
-    public static void TweakCanFightValue()
+    public void TweakCanFightValue()
     {
         canFight = !canFight;
+    }
+
+    public void EndFight()
+    {
+        canFight = false;
+        endPopup.SetActive(true);
     }
 }
