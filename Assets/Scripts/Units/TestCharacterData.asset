@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6bbcef98b749b4e815ded9f0c730f0, type: 3}
   m_Name: TestCharacterData
   m_EditorClassIdentifier: 
+  hp: 10
   speed: 5
   acceleration: 10
   price: 100

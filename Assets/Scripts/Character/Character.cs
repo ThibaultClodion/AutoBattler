@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public enum Behaviour
 {
@@ -18,10 +18,12 @@ public class Character : MonoBehaviour
     //Character's Data
     [HideInInspector] public int teamNumber;  //In case we want to add teams
     [HideInInspector] public bool isKing;
+    private float actualPV;
 
     //Components
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Slider hpSlider;
     private FightBehaviour fightBehaviour;
 
     private void Start()
@@ -60,10 +62,24 @@ public class Character : MonoBehaviour
 
         agent.speed = characterData.speed;
         agent.acceleration = characterData.acceleration;
+        actualPV = characterData.hp;
     }
 
     public int GetPrice()
     {
         return characterData.price;
+    }
+
+    public void TakeDamage(float amount)
+    {
+        actualPV -= amount;
+        hpSlider.value = actualPV / characterData.hp;
+
+        if(actualPV < 0)
+        {
+            //TODO - Check if it's king and end game if it is the case
+
+            Destroy(gameObject);
+        }
     }
 }
