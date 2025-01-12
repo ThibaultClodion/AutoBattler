@@ -17,3 +17,4 @@ MonoBehaviour:
   acceleration: 10
   price: 100
   attack: {fileID: 11400000, guid: bf8a074cb0ff8ef47937a4147790360b, type: 2}
+  spell: {fileID: 11400000, guid: dd61450c356299a4193de66a5ef8a1b2, type: 2}

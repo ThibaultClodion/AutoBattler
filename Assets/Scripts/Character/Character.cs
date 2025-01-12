@@ -12,17 +12,18 @@ public enum MoveBehaviour
 
 public class Character : MonoBehaviour
 {
-    //Character's Data
-    [HideInInspector] public int teamNumber;  //In case we want to add teams
-    private float actualPV;
-    private Character target;
-
     //Components
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Slider hpSlider;
     private MovementBehaviour fightBehaviour;
+
+    //Character's Data
+    [HideInInspector] public int teamNumber;  //In case we want to add teams
+    private float actualPV;
+    private Character target;
+    private float spellCooldown;
 
     [Header("Bot settings")]
     [SerializeField] private bool isABot;
@@ -73,17 +74,39 @@ public class Character : MonoBehaviour
     {
         if (target != null && GameManager.Instance.canFight)
         {
-            if (Vector3.Distance(transform.position, target.transform.position) < characterData.attack.range)
+            //Can use his spell
+            if(spellCooldown <= 0f
+                && Vector3.Distance(transform.position, target.transform.position) < characterData.spell.range)
             {
+                spellCooldown = characterData.spell.GetCooldownDuration();
+                animator.Play("Spell");
+                yield return new WaitForSeconds(characterData.spell.GetCooldownDuration());
+            }
+
+            //Can use his basic attack
+            else if (Vector3.Distance(transform.position, target.transform.position) < characterData.attack.range)
+            {
+                spellCooldown -= characterData.attack.GetCooldownDuration();
                 animator.Play("Attack");
+                yield return new WaitForSeconds(characterData.attack.GetCooldownDuration());
+            }
+
+            //No target in range (wait)
+            else
+            {
+                spellCooldown -= 1f;
+                yield return new WaitForSeconds(1f);
             }
         }
-
-        yield return new WaitForSeconds(characterData.attack.GetCooldownDuration());
+        //Waiting start of game or finding a target
+        else
+        {
+            spellCooldown -= 1f;
+            yield return new WaitForSeconds(1f);
+        }
 
         StartCoroutine(AttackRoutine());
     }
-
 
     public void Init(int teamNumber, MovementBehaviour fightBehaviour)
     {
@@ -93,6 +116,7 @@ public class Character : MonoBehaviour
         agent.speed = characterData.speed;
         agent.acceleration = characterData.acceleration;
         actualPV = characterData.hp;
+        spellCooldown = 0f;
     }
 
     public int GetPrice()
