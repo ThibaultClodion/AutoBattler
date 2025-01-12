@@ -125,13 +125,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508b8b4fa1817b04599f6903be6e7d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isABot: 0
-  behaviour: 0
   teamNumber: 0
-  isKing: 0
   characterData: {fileID: 11400000, guid: 7aa4ea1fd18727745bbf06b89138def0, type: 2}
   agent: {fileID: 1181871471448551107}
+  animator: {fileID: 0}
   hpSlider: {fileID: 2943717353754970823}
+  isABot: 0
+  isKing: 0
+  behaviour: 0
 --- !u!195 &1181871471448551107
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class DefensiveBehaviour : FightBehaviour
 {
-    public void Execute(NavMeshAgent agent, Character character)
+    public Character Execute(NavMeshAgent agent, Character character)
     {
         //The character run towards the nearest ennemy to his king
         Character target = FindNearestEnnemyToKing(character);
@@ -12,6 +12,8 @@ public class DefensiveBehaviour : FightBehaviour
         {
             agent.SetDestination(target.transform.position);
         }
+
+        return target;
     }
 
     private Character FindNearestEnnemyToKing(Character character)

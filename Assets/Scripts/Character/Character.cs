@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -11,20 +12,23 @@ public enum Behaviour
 
 public class Character : MonoBehaviour
 {
-    //Bot settings
-    [HideInInspector] public bool isABot;
-    [HideInInspector] public Behaviour behaviour;
-
     //Character's Data
     [HideInInspector] public int teamNumber;  //In case we want to add teams
-    [HideInInspector] public bool isKing;
     private float actualPV;
+    private Character target;
 
     //Components
     [SerializeField] private CharacterData characterData;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
     [SerializeField] private Slider hpSlider;
     private FightBehaviour fightBehaviour;
+
+    [Header("Bot settings")]
+    [SerializeField] private bool isABot;
+    [SerializeField] public bool isKing;
+    [SerializeField] private Behaviour behaviour;
+
 
     private void Start()
     {
@@ -45,14 +49,34 @@ public class Character : MonoBehaviour
                 GameManager.Instance.CharacterInitialization(this, 1, isKing, new OffensiveBehaviour());
             }
         }
+
+        if(animator != null)
+        {
+            StartCoroutine(Attack());
+        }
     }
 
     private void Update()
     {
         if (fightBehaviour != null && GameManager.Instance.canFight)
         {
-            fightBehaviour.Execute(agent, this);
+            target = fightBehaviour.Execute(agent, this);
         }
+    }
+
+    private IEnumerator Attack()
+    {
+        if(target != null && GameManager.Instance.canFight)
+        {
+            if (Vector3.Distance(transform.position, target.transform.position) < characterData.attack.range)
+            {
+                animator.Play("Attack");
+            }
+        }
+
+        yield return new WaitForSeconds(characterData.attack.GetCooldownDuration());
+
+        StartCoroutine(Attack());
     }
 
     public void Init(int teamNumber, FightBehaviour fightBehaviour)

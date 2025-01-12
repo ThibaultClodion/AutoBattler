@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6bbcef98b749b4e815ded9f0c730f0, type: 3}
-  m_Name: TestCharacterData
+  m_Script: {fileID: 11500000, guid: 004ed91ae28b7354cbfa136c2afea0c4, type: 3}
+  m_Name: Attack_Basic_Ally
   m_EditorClassIdentifier: 
-  hp: 10
-  speed: 5
-  acceleration: 10
-  price: 100
+  animationClip: {fileID: 7400000, guid: aed221f4d440c1642a0824143bc333d3, type: 2}
+  cooldown: 1
+  range: 10
