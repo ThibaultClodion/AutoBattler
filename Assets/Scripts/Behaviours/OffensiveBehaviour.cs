@@ -1,22 +1,8 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class OffensiveBehaviour : FightBehaviour
 {
-    public Character Execute(NavMeshAgent agent, Character character)
-    {
-        //The character run towards the nearest king to attack him
-        Character target = FindNearestKing(character);
-
-        if (target != null)
-        {
-            agent.SetDestination(target.transform.position);
-        }
-
-        return target;
-    }
-
-    private Character FindNearestKing(Character character)
+    public Character GetTarget(Character character)
     {
         Character nearestking = null;
 

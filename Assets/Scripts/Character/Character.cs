@@ -60,7 +60,12 @@ public class Character : MonoBehaviour
     {
         if (fightBehaviour != null && GameManager.Instance.canFight)
         {
-            target = fightBehaviour.Execute(agent, this);
+            target = fightBehaviour.GetTarget(this);
+
+            if (target != null)
+            {
+                agent.SetDestination(target.transform.position);
+            }
         }
     }
 

@@ -1,22 +1,8 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class NeutralBehaviour : FightBehaviour
 {
-    public Character Execute(NavMeshAgent agent, Character character)
-    {
-        //The character run towards the nearest ennemy to attack him
-        Character target = FindNearestEnnemy(character);
-
-        if (target != null)
-        {
-            agent.SetDestination(target.transform.position);
-        }
-
-        return target;
-    }
-
-    private Character FindNearestEnnemy(Character character)
+    public Character GetTarget(Character character)
     {
         Character nearestEnnemy = null;
 

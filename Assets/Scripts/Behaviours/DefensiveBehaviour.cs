@@ -1,22 +1,8 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class DefensiveBehaviour : FightBehaviour
 {
-    public Character Execute(NavMeshAgent agent, Character character)
-    {
-        //The character run towards the nearest ennemy to his king
-        Character target = FindNearestEnnemyToKing(character);
-
-        if (target != null)
-        {
-            agent.SetDestination(target.transform.position);
-        }
-
-        return target;
-    }
-
-    private Character FindNearestEnnemyToKing(Character character)
+    public Character GetTarget(Character character)
     {
         Character kingAlly = GameManager.Instance.kings[character.teamNumber];
         Character nearestEnnemy = null;

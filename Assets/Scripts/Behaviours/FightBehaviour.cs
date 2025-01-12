@@ -1,6 +1,4 @@
-using UnityEngine.AI;
-
 public interface FightBehaviour
 {
-    public abstract Character Execute(NavMeshAgent agent, Character character);
+    public abstract Character GetTarget(Character character);
 }
