@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DefensiveBehaviour : FightBehaviour
+public class DefensiveBehaviour : MovementBehaviour
 {
     public Character GetTarget(Character character)
     {

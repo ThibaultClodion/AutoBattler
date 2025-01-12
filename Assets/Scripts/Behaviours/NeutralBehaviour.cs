@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NeutralBehaviour : FightBehaviour
+public class NeutralBehaviour : MovementBehaviour
 {
     public Character GetTarget(Character character)
     {

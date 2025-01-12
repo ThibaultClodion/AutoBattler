@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public enum Behaviour
+public enum MoveBehaviour
 {
     Neutral,
     Offensive,
@@ -22,12 +22,12 @@ public class Character : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Slider hpSlider;
-    private FightBehaviour fightBehaviour;
+    private MovementBehaviour fightBehaviour;
 
     [Header("Bot settings")]
     [SerializeField] private bool isABot;
     [SerializeField] public bool isKing;
-    [SerializeField] private Behaviour behaviour;
+    [SerializeField] private MoveBehaviour behaviour;
 
 
     private void Start()
@@ -36,11 +36,11 @@ public class Character : MonoBehaviour
         if (isABot)
         {
             //Change his fighting behaviour
-            if (behaviour == Behaviour.Neutral)
+            if (behaviour == MoveBehaviour.Neutral)
             {
                 GameManager.Instance.CharacterInitialization(this, 1, isKing, new NeutralBehaviour());
             }
-            else if (behaviour == Behaviour.Defensive)
+            else if (behaviour == MoveBehaviour.Defensive)
             {
                 GameManager.Instance.CharacterInitialization(this, 1, isKing, new DefensiveBehaviour());
             }
@@ -52,7 +52,7 @@ public class Character : MonoBehaviour
 
         if(animator != null)
         {
-            StartCoroutine(Attack());
+            StartCoroutine(AttackRoutine());
         }
     }
 
@@ -69,9 +69,9 @@ public class Character : MonoBehaviour
         }
     }
 
-    private IEnumerator Attack()
+    private IEnumerator AttackRoutine()
     {
-        if(target != null && GameManager.Instance.canFight)
+        if (target != null && GameManager.Instance.canFight)
         {
             if (Vector3.Distance(transform.position, target.transform.position) < characterData.attack.range)
             {
@@ -81,10 +81,11 @@ public class Character : MonoBehaviour
 
         yield return new WaitForSeconds(characterData.attack.GetCooldownDuration());
 
-        StartCoroutine(Attack());
+        StartCoroutine(AttackRoutine());
     }
 
-    public void Init(int teamNumber, FightBehaviour fightBehaviour)
+
+    public void Init(int teamNumber, MovementBehaviour fightBehaviour)
     {
         this.teamNumber = teamNumber;
         this.fightBehaviour = fightBehaviour;

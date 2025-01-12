@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
         CharacterInitialization(ally, 0, isKing, new NeutralBehaviour());
     }
 
-    public void CharacterInitialization(Character character, int teamNumber, bool isKing, FightBehaviour fightBehaviour)
+    public void CharacterInitialization(Character character, int teamNumber, bool isKing, MovementBehaviour fightBehaviour)
     {
         character.Init(teamNumber, fightBehaviour);
         characters.Add(character);
