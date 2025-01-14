@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4602514787350289441}
   - component: {fileID: 740126878181368081}
   - component: {fileID: 3095468262902648983}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038513166715546884}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RangeOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 4124141884113657698}
   - component: {fileID: 1786067888727716686}
   - component: {fileID: 4768336296649757489}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Appearance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 8808236860199221962}
   m_Layer: 6
   m_Name: Character_Ally
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

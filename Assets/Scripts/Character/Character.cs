@@ -165,6 +165,7 @@ public class Character : MonoBehaviour
                 GameManager.Instance.EndFight();
             }
 
+            GameManager.Instance.characters.Remove(this);
             Destroy(gameObject);
         }
         //Be sure that actualHP is cap
