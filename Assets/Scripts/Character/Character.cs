@@ -12,9 +12,12 @@ public enum MoveBehaviour
 
 public class Character : MonoBehaviour
 {
-    //Components
+    [Header("Data")]
     [SerializeField] private CharacterData characterData;
     [SerializeField] private Attack attack;
+    [SerializeField] private Attack spell;
+
+    [Header("Components")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Slider hpSlider;
@@ -77,19 +80,20 @@ public class Character : MonoBehaviour
         {
             //Can use his spell
             if(spellCooldown <= 0f
-                && Vector3.Distance(transform.position, target.transform.position) < attack.range)
+                && Vector3.Distance(transform.position, target.transform.position) < spell.range)
             {
+                spellCooldown = spell.GetCooldown();
+                spell.Launch(target.transform, animator);
+                yield return new WaitForSeconds(spell.GetCooldown());
+            }
+
+            //Can use his attack
+            else if (Vector3.Distance(transform.position, target.transform.position) < attack.range)
+            {
+                spellCooldown -= attack.GetCooldown();
                 attack.Launch(target.transform, animator);
                 yield return new WaitForSeconds(attack.GetCooldown());
             }
-
-            /*//Can use his basic attack
-            else if (Vector3.Distance(transform.position, target.transform.position) < characterData.attack.range)
-            {
-                spellCooldown -= characterData.attack.GetCooldownDuration();
-                animator.Play("Attack");
-                yield return new WaitForSeconds(characterData.attack.GetCooldownDuration());
-            }*/
 
             //No target in range (wait)
             else
