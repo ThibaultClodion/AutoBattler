@@ -31,12 +31,11 @@ public class GameManager : Singleton<GameManager>
     {
         if(kings[character.teamNumber] != null)
         {
-            kings[character.teamNumber].isKing = false;
+            kings[character.teamNumber].IsKing(false);
         }
 
         kings[character.teamNumber] = character;
-        kings[character.teamNumber].isKing = true;
-        character.transform.localScale = Vector3.one * 2;   //Todo : change this to a crown over character head
+        kings[character.teamNumber].IsKing(true);
     }
 
     //Useful to start the game and let unit move

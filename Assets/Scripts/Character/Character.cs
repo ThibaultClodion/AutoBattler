@@ -29,11 +29,12 @@ public class Character : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Slider hpSlider;
     [SerializeField] private Slider manaSlider;
+    [SerializeField] private GameObject crown;
     private MovementBehaviour fightBehaviour;
 
     [Header("Bot settings")]
     [SerializeField] private bool isABot;
-    [SerializeField] public bool isKing;
+    [SerializeField] private bool isKing;
     [SerializeField] private MoveBehaviour behaviour;
 
 
@@ -173,6 +174,12 @@ public class Character : MonoBehaviour
         }
 
         hpSlider.value = actualHp / characterData.hp;
+    }
+
+    public void IsKing(bool isKing)
+    {
+        this.isKing = isKing;
+        crown.SetActive(isKing);
     }
 
     private float GetRangeDistance()
