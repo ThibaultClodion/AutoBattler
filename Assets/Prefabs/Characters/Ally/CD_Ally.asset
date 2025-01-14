@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf6bbcef98b749b4e815ded9f0c730f0, type: 3}
-  m_Name: CharacterData_Ally
+  m_Name: CD_Ally
   m_EditorClassIdentifier: 
   hp: 10
   speed: 5

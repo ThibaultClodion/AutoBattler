@@ -1,14 +1,25 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Attack", menuName = "Scriptable Objects/Attack")]
-public class Attack : ScriptableObject
+public class Attack : MonoBehaviour
 {
-    [SerializeField] public AnimationClip animationClip;
+    [SerializeField] private bool isSpell;
+    [SerializeField] private AnimationClip animationClip;
     [SerializeField] private float cooldown;
     [SerializeField] public float range;
 
+    public virtual void Launch(Transform target, Animator animator)
+    {
+        if(isSpell)
+        {
+            animator.Play("Spell");
+        }
+        else
+        {
+            animator.Play("Attack");
+        }
+    }
 
-    public float GetCooldownDuration()
+    public float GetCooldown()
     {
         return animationClip.length + cooldown;
     }

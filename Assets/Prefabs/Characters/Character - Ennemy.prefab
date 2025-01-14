@@ -52,7 +52,6 @@ MonoBehaviour:
   agent: {fileID: 1181871471448551107}
   animator: {fileID: 0}
   hpSlider: {fileID: 2943717353754970823}
-  manaSlider: {fileID: 0}
   teamNumber: 0
   isABot: 0
   isKing: 0

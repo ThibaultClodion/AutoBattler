@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 1714906918659492430}
   - component: {fileID: 5199329500996014574}
   - component: {fileID: 7387343304723006446}
+  - component: {fileID: -161158931667442747}
   m_Layer: 6
   m_Name: Character_Ally
   m_TagString: Untagged
@@ -268,10 +269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 7aa4ea1fd18727745bbf06b89138def0, type: 2}
+  attack: {fileID: -161158931667442747}
   agent: {fileID: 5199329500996014574}
   animator: {fileID: 7387343304723006446}
   hpSlider: {fileID: 163797090491204047}
-  manaSlider: {fileID: 0}
   teamNumber: 0
   isABot: 0
   isKing: 0
@@ -320,6 +321,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-161158931667442747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646324515707261746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca65e60f779d6a34782aafb0b9ebab56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSpell: 0
+  animationClip: {fileID: 7400000, guid: aed221f4d440c1642a0824143bc333d3, type: 2}
+  cooldown: 1
+  range: 5
 --- !u!1001 &3929400883499271104
 PrefabInstance:
   m_ObjectHideFlags: 0
