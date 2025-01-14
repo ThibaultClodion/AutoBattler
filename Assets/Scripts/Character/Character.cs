@@ -13,21 +13,20 @@ public enum MoveBehaviour
 public class Character : MonoBehaviour
 {
     [Header("Data")]
+    [HideInInspector] public int teamNumber;  //In case we want to add teams
     [SerializeField] private CharacterData characterData;
     [SerializeField] private Attack attack;
     [SerializeField] private Attack spell;
+    private int mana;
+    private float actualHp;
+    private Character target;
 
     [Header("Components")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
     [SerializeField] private Slider hpSlider;
+    [SerializeField] private Slider manaSlider;
     private MovementBehaviour fightBehaviour;
-
-    //Character's Data
-    [HideInInspector] public int teamNumber;  //In case we want to add teams
-    private float actualPV;
-    private Character target;
-    private float spellCooldown;
 
     [Header("Bot settings")]
     [SerializeField] private bool isABot;
@@ -79,33 +78,30 @@ public class Character : MonoBehaviour
         if (target != null && GameManager.Instance.canFight)
         {
             //Can use his spell
-            if(spellCooldown <= 0f
+            if (mana >= characterData.maxMana
                 && Vector3.Distance(transform.position, target.transform.position) < spell.range)
             {
-                spellCooldown = spell.GetCooldown();
-                spell.Launch(target.transform, animator);
+                AddMana(-mana);
+                spell.Launch(this, target.transform, animator);
                 yield return new WaitForSeconds(spell.GetCooldown());
             }
 
             //Can use his attack
             else if (Vector3.Distance(transform.position, target.transform.position) < attack.range)
             {
-                spellCooldown -= attack.GetCooldown();
-                attack.Launch(target.transform, animator);
+                attack.Launch(this, target.transform, animator);
                 yield return new WaitForSeconds(attack.GetCooldown());
             }
 
             //No target in range (wait)
             else
             {
-                spellCooldown -= 1f;
                 yield return new WaitForSeconds(1f);
             }
         }
         //Waiting start of game or finding a target
         else
         {
-            spellCooldown -= 1f;
             yield return new WaitForSeconds(1f);
         }
 
@@ -119,8 +115,8 @@ public class Character : MonoBehaviour
 
         agent.speed = characterData.speed;
         agent.acceleration = characterData.acceleration;
-        actualPV = characterData.hp;
-        spellCooldown = 0f;
+        actualHp = characterData.hp;
+        mana = characterData.maxMana;
     }
 
     public int GetPrice()
@@ -128,19 +124,41 @@ public class Character : MonoBehaviour
         return characterData.price;
     }
 
+    public void AddMana(int amount)
+    {
+        mana += amount;
+
+        if (mana > characterData.maxMana)
+        {
+            mana = characterData.maxMana;
+        }
+        else if(mana < 0)
+        {
+            mana = 0;
+        }
+
+        manaSlider.value = (float)mana / characterData.maxMana;
+    }
+
     public void TakeDamage(float amount)
     {
-        actualPV -= amount;
-        hpSlider.value = actualPV / characterData.hp;
+        actualHp -= amount;
 
-        if(actualPV < 0)
+        if (actualHp < 0)
         {
-            if(isKing)
+            if (isKing)
             {
                 GameManager.Instance.EndFight();
             }
 
             Destroy(gameObject);
         }
+        //Be sure that actualHP is cap
+        else if (actualHp > characterData.hp)
+        {
+            actualHp = characterData.hp;
+        }
+
+        hpSlider.value = actualHp / characterData.hp;
     }
 }

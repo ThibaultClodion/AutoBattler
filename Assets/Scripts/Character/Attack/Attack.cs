@@ -7,7 +7,7 @@ public class Attack : MonoBehaviour
     [SerializeField] private float cooldown;
     [SerializeField] public float range;
 
-    public virtual void Launch(Transform target, Animator animator)
+    public virtual void Launch(Character Launcher, Transform target, Animator animator)
     {
         if(isSpell)
         {
@@ -22,10 +22,5 @@ public class Attack : MonoBehaviour
     public float GetCooldown()
     {
         return animationClip.length + cooldown;
-    }
-
-    public float GetAnimationDuration()
-    {
-        return animationClip.length;
     }
 }
