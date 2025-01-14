@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -12,11 +13,13 @@ public enum MoveBehaviour
 
 public class Character : MonoBehaviour
 {
-    [Header("Data")]
     [HideInInspector] public int teamNumber;  //In case we want to add teams
     [SerializeField] private CharacterData characterData;
+
+    [Header("Fighting Data")]
     [SerializeField] private Attack attack;
     [SerializeField] private Attack spell;
+    [SerializeField] private Transform rangeOffset;
     private int mana;
     private float actualHp;
     private Character target;
@@ -54,7 +57,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        if(animator != null)
+        if(attack != null && spell != null)
         {
             StartCoroutine(AttackRoutine());
         }
@@ -66,8 +69,19 @@ public class Character : MonoBehaviour
         {
             target = fightBehaviour.GetTarget(this);
 
-            if (target != null)
+            //Walk only if not at good distance
+            if(target != null)
             {
+                if(GetRangeDistance() > Mathf.Min(spell.range, attack.range))
+                {
+                    animator.SetBool("IsWalking", true);
+                }
+                else
+                {
+                    animator.SetBool("IsWalking", false);
+                    agent.velocity = Vector3.zero;
+                }
+
                 agent.SetDestination(target.transform.position);
             }
         }
@@ -78,8 +92,7 @@ public class Character : MonoBehaviour
         if (target != null && GameManager.Instance.canFight)
         {
             //Can use his spell
-            if (mana >= characterData.maxMana
-                && Vector3.Distance(transform.position, target.transform.position) < spell.range)
+            if (mana >= characterData.maxMana && GetRangeDistance() < spell.range)
             {
                 AddMana(-mana);
                 spell.Launch(this, target.transform, animator);
@@ -87,7 +100,7 @@ public class Character : MonoBehaviour
             }
 
             //Can use his attack
-            else if (Vector3.Distance(transform.position, target.transform.position) < attack.range)
+            else if (GetRangeDistance() < attack.range)
             {
                 attack.Launch(this, target.transform, animator);
                 yield return new WaitForSeconds(attack.GetCooldown());
@@ -96,13 +109,13 @@ public class Character : MonoBehaviour
             //No target in range (wait)
             else
             {
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.1f);
             }
         }
         //Waiting start of game or finding a target
         else
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         StartCoroutine(AttackRoutine());
@@ -160,5 +173,12 @@ public class Character : MonoBehaviour
         }
 
         hpSlider.value = actualHp / characterData.hp;
+    }
+
+    private float GetRangeDistance()
+    {
+        return Vector2.Distance(
+                new Vector2(rangeOffset.position.x, rangeOffset.position.z),
+                new Vector2(target.transform.position.x, target.transform.position.z));
     }
 }
