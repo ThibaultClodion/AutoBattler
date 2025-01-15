@@ -601,7 +601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   payableUnits:
   - {fileID: 7367805869367686883, guid: 90994b501ecdc9c47885eb218f7056be, type: 3}
-  - {fileID: 1714906918659492430, guid: 671b20c8f6246e749a421274d6e69449, type: 3}
+  - {fileID: 7905578479647473, guid: f8e9fc02836c70947936db7f879a77f5, type: 3}
   unitButtonPrefab: {fileID: 3663983900943785512, guid: 4d7af910ed99ce14ba688b9c44068bed, type: 3}
   unitVisualization: {fileID: 0}
   unitPlacableLayerMask:
