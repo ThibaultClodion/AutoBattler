@@ -602,6 +602,8 @@ MonoBehaviour:
   payableUnits:
   - {fileID: 7367805869367686883, guid: 90994b501ecdc9c47885eb218f7056be, type: 3}
   - {fileID: 7905578479647473, guid: f8e9fc02836c70947936db7f879a77f5, type: 3}
+  - {fileID: 5772314350080444315, guid: bbe27a0d4e6ba83429a48cdb5f83290a, type: 3}
+  - {fileID: 1618303272144468488, guid: 942b575189dcf674a944eadeebaaf818, type: 3}
   unitButtonPrefab: {fileID: 3663983900943785512, guid: 4d7af910ed99ce14ba688b9c44068bed, type: 3}
   unitVisualization: {fileID: 0}
   unitPlacableLayerMask:

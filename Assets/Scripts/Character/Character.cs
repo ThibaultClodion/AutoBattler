@@ -158,7 +158,7 @@ public class Character : MonoBehaviour
     {
         actualHp -= amount;
 
-        if (actualHp < 0)
+        if (actualHp <= 0)
         {
             if (isKing)
             {

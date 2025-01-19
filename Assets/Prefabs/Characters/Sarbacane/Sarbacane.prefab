@@ -781,6 +781,10 @@ MonoBehaviour:
   projectileData:
     speed: 50
     damage: 100
+    isAnExplosion: 0
+    explosionRadius: 0
+    particleOnHit: {fileID: 0}
+    target: {fileID: 0}
     launcherTeamNumber: 0
 --- !u!114 &-8891372609123980071
 MonoBehaviour:
@@ -804,6 +808,10 @@ MonoBehaviour:
   projectileData:
     speed: 50
     damage: 100
+    isAnExplosion: 0
+    explosionRadius: 0
+    particleOnHit: {fileID: 0}
+    target: {fileID: 0}
     launcherTeamNumber: 0
 --- !u!1001 &2302899841974699228
 PrefabInstance:
