@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6bbcef98b749b4e815ded9f0c730f0, type: 3}
   m_Name: CD_Maori
   m_EditorClassIdentifier: 
-  hp: 100
-  speed: 5
+  hp: 500
+  speed: 2
   acceleration: 5
   price: 200
   maxMana: 3
