@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 995985490483281338}
   - component: {fileID: 3041764623928920432}
   - component: {fileID: 4964549809220746289}
+  - component: {fileID: 453582232407526048}
+  - component: {fileID: 2447250318038278007}
   m_Layer: 0
   m_Name: LeftSword
   m_TagString: Untagged
@@ -106,5 +108,44 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.091922015, y: 0.009681179, z: 0.0045476817}
-  m_Center: {x: -0.035898905, y: -0.0021232807, z: -0.00083860214}
+  m_Size: {x: 0.09192202, y: 0.006008744, z: 0.004547685}
+  m_Center: {x: -0.03614064, y: 6.731718e-10, z: 0.00000000960473}
+--- !u!54 &453582232407526048
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546154518553929893}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &2447250318038278007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546154518553929893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeca00a03812bd84b96d1d1c3038190e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

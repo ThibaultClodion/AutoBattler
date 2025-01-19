@@ -6,8 +6,13 @@ public class ProjectileData
 {
     public float speed;
     public float damage;
+
+    [Header("Explosion property")]
     public bool isAnExplosion;
     public float explosionRadius;
+
+    [Header("Other Properties")]
+    public GameObject spawnGoOnHit;
     public ParticleSystem particleOnHit;
 
     [HideInInspector] public Transform target;
@@ -20,14 +25,7 @@ public class Projectile : MonoBehaviour
 
     public void Init(ProjectileData projectileData)
     {
-        data.speed = projectileData.speed;
-        data.damage = projectileData.damage;
-        data.isAnExplosion = projectileData.isAnExplosion;
-        data.explosionRadius = projectileData.explosionRadius;
-        data.particleOnHit = projectileData.particleOnHit;
-
-        data.target = projectileData.target;
-        data.launcherTeamNumber = projectileData.launcherTeamNumber;
+        data = projectileData;
 
         StartCoroutine(SelfDestroy());
     }
@@ -52,10 +50,8 @@ public class Projectile : MonoBehaviour
 
             if (isHitten)
             {
-                if (data.particleOnHit != null)
-                {
-                    Instantiate(data.particleOnHit, transform.position, Quaternion.identity);
-                }
+                SpawnParticles();
+                SpawnGOonHit();
 
                 Destroy(gameObject);
             }
@@ -63,10 +59,8 @@ public class Projectile : MonoBehaviour
         //Projectile can't explode on a ally
         if (data.isAnExplosion && !IsAnAlly(other))
         {
-            if (data.particleOnHit != null)
-            {
-                Instantiate(data.particleOnHit, transform.position, Quaternion.identity);
-            }
+            SpawnParticles();
+            SpawnGOonHit();
 
             Collider[] hitten = Physics.OverlapSphere(transform.position, data.explosionRadius);
 
@@ -103,6 +97,23 @@ public class Projectile : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void SpawnParticles()
+    {
+        if (data.particleOnHit != null)
+        {
+            Instantiate(data.particleOnHit, transform.position, Quaternion.identity);
+        }
+    }
+
+    private void SpawnGOonHit()
+    {
+        if (data.spawnGoOnHit != null)
+        {
+            Instantiate(data.spawnGoOnHit, new Vector3(transform.position.x, data.spawnGoOnHit.transform.position.y,
+                transform.position.z), Quaternion.identity);
+        }
     }
 
     IEnumerator SelfDestroy()
