@@ -781,8 +781,10 @@ MonoBehaviour:
   projectileData:
     speed: 50
     damage: 100
+    isAutoGuided: 1
     isAnExplosion: 0
     explosionRadius: 0
+    spawnGoOnHit: {fileID: 0}
     particleOnHit: {fileID: 0}
     target: {fileID: 0}
     launcherTeamNumber: 0
@@ -808,8 +810,10 @@ MonoBehaviour:
   projectileData:
     speed: 50
     damage: 100
+    isAutoGuided: 0
     isAnExplosion: 0
     explosionRadius: 0
+    spawnGoOnHit: {fileID: 0}
     particleOnHit: {fileID: 0}
     target: {fileID: 0}
     launcherTeamNumber: 0

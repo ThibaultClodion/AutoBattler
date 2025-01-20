@@ -228,6 +228,7 @@ MonoBehaviour:
   projectileData:
     speed: 30
     damage: 50
+    isAutoGuided: 1
     isAnExplosion: 1
     explosionRadius: 10
     spawnGoOnHit: {fileID: 0}
@@ -256,6 +257,7 @@ MonoBehaviour:
   projectileData:
     speed: 30
     damage: 0
+    isAutoGuided: 1
     isAnExplosion: 1
     explosionRadius: 0
     spawnGoOnHit: {fileID: 10344046405768469, guid: b17b87042b8e67949b5019c2c8105da5, type: 3}

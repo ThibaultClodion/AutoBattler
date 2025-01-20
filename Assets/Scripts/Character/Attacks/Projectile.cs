@@ -6,6 +6,7 @@ public class ProjectileData
 {
     public float speed;
     public float damage;
+    public bool isAutoGuided;
 
     [Header("Explosion property")]
     public bool isAnExplosion;
@@ -32,13 +33,13 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if (data.target != null)
+        if (data.target != null && data.isAutoGuided)
         {
             transform.position += (data.target.position - transform.position).normalized * Time.deltaTime * data.speed;
         }
         else
         {
-            transform.position += Vector3.forward * Time.deltaTime * data.speed;
+            transform.position += transform.forward * Time.deltaTime * data.speed;
         }
     }
 
