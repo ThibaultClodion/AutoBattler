@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6bbcef98b749b4e815ded9f0c730f0, type: 3}
   m_Name: CD_Maori
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 2bc2ba7964cb1c2449ed38c1785d1dcf, type: 3}
   hp: 500
   speed: 2
   acceleration: 5

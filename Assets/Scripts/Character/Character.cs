@@ -183,6 +183,11 @@ public class Character : MonoBehaviour
         crown.SetActive(isKing);
     }
 
+    public Sprite GetSprite()
+    {
+        return characterData.sprite;
+    }
+
     private float GetRangeDistance()
     {
         return Vector2.Distance(
