@@ -19,7 +19,6 @@ public class Character : MonoBehaviour
     [Header("Fighting Data")]
     [SerializeField] private Attack attack;
     [SerializeField] private Attack spell;
-    [SerializeField] private Transform rangeOffset;
     private int mana;
     private float actualHp;
     private Character target;
@@ -191,7 +190,7 @@ public class Character : MonoBehaviour
     private float GetRangeDistance()
     {
         return Vector2.Distance(
-                new Vector2(rangeOffset.position.x, rangeOffset.position.z),
+                new Vector2(transform.position.x, transform.position.z),
                 new Vector2(target.transform.position.x, target.transform.position.z));
     }
 }

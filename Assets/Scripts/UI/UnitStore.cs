@@ -61,7 +61,7 @@ public class UnitStore : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, unitPlacableLayerMask))
         {
-            unitVisualization.transform.position = hit.point;
+            unitVisualization.transform.position = hit.point + new Vector3(0, 0.1f, 0);
         }
     }
 
