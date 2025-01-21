@@ -158,7 +158,7 @@ public class Character : MonoBehaviour
     {
         actualHp -= amount;
 
-        if (actualHp < 0)
+        if (actualHp <= 0)
         {
             if (isKing)
             {
@@ -181,6 +181,11 @@ public class Character : MonoBehaviour
     {
         this.isKing = isKing;
         crown.SetActive(isKing);
+    }
+
+    public Sprite GetSprite()
+    {
+        return characterData.sprite;
     }
 
     private float GetRangeDistance()

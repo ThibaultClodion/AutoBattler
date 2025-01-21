@@ -14,6 +14,8 @@ public class ProjectilesThrower : Attack
     public override void Launch(Character launcher, Transform target, Animator animator)
     {
         base.Launch(launcher, target, animator);
+
+        projectileData.target = target;
         projectileData.launcherTeamNumber = launcher.teamNumber;
 
         StartCoroutine(LaunchProjectile());

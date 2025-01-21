@@ -1,14 +1,13 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UnitStore : MonoBehaviour
 {
     [Header("Units")]
     [SerializeField] private Character[] payableUnits;
     private Character selectedUnit;
-    [SerializeField] private Button unitButtonPrefab;
+    [SerializeField] private UnitButton unitButtonPrefab;
 
     [Header("Unit Placement")]
     [SerializeField] private GameObject unitVisualization;
@@ -70,8 +69,9 @@ public class UnitStore : MonoBehaviour
     {
         foreach (Character character in payableUnits)
         {
-            Button unitButton = Instantiate(unitButtonPrefab, transform);
-            unitButton.onClick.AddListener(delegate { ChangeSelectedUnit(character); } );
+            UnitButton unitButton = Instantiate(unitButtonPrefab, transform);
+            unitButton.button.onClick.AddListener(delegate { ChangeSelectedUnit(character); } );
+            unitButton.Init(character.GetSprite());
         }
     }
 
@@ -83,6 +83,6 @@ public class UnitStore : MonoBehaviour
     private void AddToMoney(int amount)
     {
         money += amount;
-        moneyText.text = "Money : " + money;
+        moneyText.text = money.ToString();
     }
 }

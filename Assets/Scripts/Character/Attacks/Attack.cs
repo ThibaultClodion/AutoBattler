@@ -24,4 +24,9 @@ public class Attack : MonoBehaviour
     {
         return animationClip.length + cooldown;
     }
+
+    public float GetAnimationClipTime()
+    {
+        return animationClip.length;
+    }
 }
