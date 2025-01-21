@@ -3234,7 +3234,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 7aa4ea1fd18727745bbf06b89138def0, type: 2}
   attack: {fileID: 4076526406461893605}
   spell: {fileID: 4570288463945970410}
-  rangeOffset: {fileID: 6420876368031311140}
   agent: {fileID: 970089520306198990}
   animator: {fileID: 2581922122492120014}
   hpSlider: {fileID: 5121759852661901807}
@@ -4685,7 +4684,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 7aa4ea1fd18727745bbf06b89138def0, type: 2}
   attack: {fileID: 2056871457202103831}
   spell: {fileID: 1978540108199132952}
-  rangeOffset: {fileID: 9007845302827624662}
   agent: {fileID: 2985800641649890364}
   animator: {fileID: 562130714068207164}
   hpSlider: {fileID: 7137615974500910109}
@@ -4950,7 +4948,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 7aa4ea1fd18727745bbf06b89138def0, type: 2}
   attack: {fileID: 1637283216692041320}
   spell: {fileID: 1244852112166932327}
-  rangeOffset: {fileID: 8588925565371586729}
   agent: {fileID: 2547915910101099587}
   animator: {fileID: 1008422860204013123}
   hpSlider: {fileID: 7583589193411949666}
@@ -5087,7 +5084,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 7aa4ea1fd18727745bbf06b89138def0, type: 2}
   attack: {fileID: 1545146002194917957}
   spell: {fileID: 1337322891381371722}
-  rangeOffset: {fileID: 8428561713077200004}
   agent: {fileID: 2347992195941161070}
   animator: {fileID: 1024315256748755566}
   hpSlider: {fileID: 7707884657678567503}
