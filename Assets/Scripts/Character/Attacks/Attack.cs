@@ -17,6 +17,7 @@ public class Attack : MonoBehaviour
         else
         {
             animator.Play("Attack");
+            launcher.AddMana(1);
         }
     }
 
