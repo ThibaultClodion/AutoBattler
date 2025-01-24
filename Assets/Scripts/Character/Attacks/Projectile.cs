@@ -27,8 +27,6 @@ public class Projectile : MonoBehaviour
     public void Init(ProjectileData projectileData)
     {
         data = projectileData;
-
-        StartCoroutine(SelfDestroy());
     }
 
     private void Update()
@@ -115,14 +113,5 @@ public class Projectile : MonoBehaviour
             Instantiate(data.spawnGoOnHit, new Vector3(transform.position.x, data.spawnGoOnHit.transform.position.y,
                 transform.position.z), Quaternion.identity);
         }
-    }
-
-    IEnumerator SelfDestroy()
-    {
-        //TODO : Add invisible triggers to delete projectiles
-        //TODO : Add a pooling system
-        yield return new WaitForSeconds(10f);
-
-        Destroy(gameObject);
     }
 }
