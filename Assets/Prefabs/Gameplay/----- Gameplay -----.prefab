@@ -323,6 +323,7 @@ MonoBehaviour:
   unitPlacableLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  startingMoney: 500
   moneyText: {fileID: 4183455581640910046}
 --- !u!114 &6499889216464421600
 MonoBehaviour:
@@ -659,7 +660,7 @@ GameObject:
   - component: {fileID: 2678144834441844976}
   - component: {fileID: 4192878327230531331}
   m_Layer: 0
-  m_Name: Player
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

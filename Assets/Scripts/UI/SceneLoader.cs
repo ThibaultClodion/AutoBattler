@@ -14,7 +14,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    public void ChangeScene(SceneAsset scene)
+    public void ChangeSceneToLoad(SceneAsset scene)
     {
         this.scene = scene;
     }

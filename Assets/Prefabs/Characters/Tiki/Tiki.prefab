@@ -277,7 +277,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: f33d38426655b14438c2ca7ff9b86cd4, type: 2}
   attack: {fileID: 4008371655940775226}
   spell: {fileID: 4898823636821449739}
-  rangeOffset: {fileID: 7663928466252357890}
   agent: {fileID: 4890712872399664522}
   animator: {fileID: 5515500930672199136}
   hpSlider: {fileID: 2375922153230474748}
@@ -368,7 +367,7 @@ MonoBehaviour:
   isSpell: 0
   animationClip: {fileID: 7400000, guid: 3aeafe79c9b80594e8ea96a4be334ecc, type: 2}
   cooldown: 0
-  range: 1
+  range: 1.5
   weapons:
   - weapon: {fileID: 8289986252697174312}
     damage: 10
@@ -391,7 +390,7 @@ MonoBehaviour:
   isSpell: 1
   animationClip: {fileID: 7400000, guid: 44ce8ea00b5dc3f408e2d507c4cc5acb, type: 2}
   cooldown: 0.2
-  range: 1
+  range: 1.5
   weapons:
   - weapon: {fileID: 8289986252697174312}
     damage: 10

@@ -27,6 +27,7 @@ public class ProjectilesThrower : Attack
 
         Projectile[] projectilesArray = projectiles.GetComponentsInChildren<Projectile>(); 
 
+        //Initialize all projectiles in the prefab (useful for multiples projectiles in one prefab)
         foreach (Projectile projectile in projectilesArray)
         {
             Projectile throwed = Instantiate(projectile, throwPosition.position + projectile.transform.position, 

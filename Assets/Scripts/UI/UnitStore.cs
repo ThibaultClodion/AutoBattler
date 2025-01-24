@@ -14,15 +14,16 @@ public class UnitStore : MonoBehaviour
     [SerializeField] private LayerMask unitPlacableLayerMask;
 
     [Header("Money")]
+    [SerializeField] private int startingMoney;
     [SerializeField] private TextMeshProUGUI moneyText;
-    private float money;
+    private int money;
 
     void Start()
     {
         selectedUnit = payableUnits[0];    // Ensure that one unit is selected
         CreateUnitButtons();
 
-        AddToMoney(500); //Todo : make a level scriptable object that give a money amount
+        AddToMoney(startingMoney);
     }
 
     private void OnEnable()

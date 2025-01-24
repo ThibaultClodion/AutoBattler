@@ -68,16 +68,18 @@ public class Character : MonoBehaviour
         {
             target = fightBehaviour.GetTarget(this);
 
-            //Walk only if not at good distance
             if(target != null)
             {
-                if(GetRangeDistance() > Mathf.Min(spell.range, attack.range))
+                //Walk only if not at good distance
+                if (GetTargetDistance() > Mathf.Min(spell.range, attack.range))
                 {
                     animator.SetBool("IsWalking", true);
                 }
+                //If at good distance stop moving and rotate to face target
                 else
                 {
                     animator.SetBool("IsWalking", false);
+                    RotateToTarget();
                     agent.velocity = Vector3.zero;
                 }
 
@@ -91,7 +93,7 @@ public class Character : MonoBehaviour
         if (target != null && GameManager.Instance.canFight)
         {
             //Can use his spell
-            if (mana >= characterData.maxMana && GetRangeDistance() < spell.range)
+            if (mana >= characterData.maxMana && GetTargetDistance() < spell.range)
             {
                 AddMana(-mana);
                 spell.Launch(this, target.transform, animator);
@@ -99,7 +101,7 @@ public class Character : MonoBehaviour
             }
 
             //Can use his attack
-            else if (GetRangeDistance() < attack.range)
+            else if (GetTargetDistance() < attack.range)
             {
                 attack.Launch(this, target.transform, animator);
                 yield return new WaitForSeconds(attack.GetCooldown());
@@ -186,10 +188,18 @@ public class Character : MonoBehaviour
         return characterData.sprite;
     }
 
-    private float GetRangeDistance()
+    private float GetTargetDistance()
     {
         return Vector2.Distance(
                 new Vector2(transform.position.x, transform.position.z),
                 new Vector2(target.transform.position.x, target.transform.position.z));
+    }
+
+    private void RotateToTarget()
+    {
+        var lookPos = target.transform.position - transform.position;
+        lookPos.y = 0;
+        var rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5f);
     }
 }

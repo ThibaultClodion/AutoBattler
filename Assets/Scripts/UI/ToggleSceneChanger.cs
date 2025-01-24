@@ -17,7 +17,7 @@ public class ToggleSceneChanger : MonoBehaviour
     {
         if(change.isOn)
         {
-            sceneLoader.ChangeScene(scene);
+            sceneLoader.ChangeSceneToLoad(scene);
         }
     }
 }
