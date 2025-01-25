@@ -367,7 +367,7 @@ MonoBehaviour:
   isSpell: 0
   animationClip: {fileID: 7400000, guid: 3aeafe79c9b80594e8ea96a4be334ecc, type: 2}
   cooldown: 0
-  range: 1.5
+  range: 2
   weapons:
   - weapon: {fileID: 8289986252697174312}
     damage: 10
@@ -390,7 +390,7 @@ MonoBehaviour:
   isSpell: 1
   animationClip: {fileID: 7400000, guid: 44ce8ea00b5dc3f408e2d507c4cc5acb, type: 2}
   cooldown: 0.2
-  range: 1.5
+  range: 2
   weapons:
   - weapon: {fileID: 8289986252697174312}
     damage: 10
