@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -9,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     [NonSerialized] public bool canFight;
 
     [SerializeField] private GameObject endPopup;
+    [SerializeField] private TextMeshProUGUI endText;
 
     public void InstantiateAlly(Character character, Vector3 position, bool isKing)
     {
@@ -44,8 +46,17 @@ public class GameManager : Singleton<GameManager>
         canFight = !canFight;
     }
 
-    public void EndFight()
+    public void EndFight(int teamNumber)
     {
+        if(teamNumber == 0)
+        {
+            endText.text = "You Lose !";
+        }
+        else
+        {
+            endText.text = "You Win !";
+        }
+
         canFight = false;
         endPopup.SetActive(true);
     }

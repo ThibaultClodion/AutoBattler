@@ -162,7 +162,7 @@ public class Character : MonoBehaviour
         {
             if (isKing)
             {
-                GameManager.Instance.EndFight();
+                GameManager.Instance.EndFight(teamNumber);
             }
 
             GameManager.Instance.characters.Remove(this);
