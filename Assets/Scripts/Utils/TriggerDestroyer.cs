@@ -4,6 +4,9 @@ public class TriggerDestroyer : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if(other.tag == "Character")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

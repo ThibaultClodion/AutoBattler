@@ -64,11 +64,11 @@ public class Character : MonoBehaviour
 
     private void Update()
     {
-        if (fightBehaviour != null && GameManager.Instance.canFight)
+        if (fightBehaviour != null && GameManager.Instance.canFight && (attack != null || spell != null))
         {
             target = fightBehaviour.GetTarget(this);
 
-            if(target != null)
+            if (target != null)
             {
                 //Walk only if not at good distance
                 if (GetTargetDistance() > Mathf.Min(spell.range, attack.range))
@@ -83,6 +83,16 @@ public class Character : MonoBehaviour
                     agent.velocity = Vector3.zero;
                 }
 
+                agent.SetDestination(target.transform.position);
+            }
+        }
+        else if (fightBehaviour != null && GameManager.Instance.canFight && attack == null && spell == null)
+        {
+            target = fightBehaviour.GetTarget(this);
+
+            if (target != null)
+            {
+                animator.SetBool("IsWalking", true);
                 agent.SetDestination(target.transform.position);
             }
         }
