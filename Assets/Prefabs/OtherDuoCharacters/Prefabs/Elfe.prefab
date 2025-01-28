@@ -5685,7 +5685,7 @@ MonoBehaviour:
   waitingTime: 0.75
   projectileData:
     speed: 30
-    damage: 50
+    damage: 35
     isAutoGuided: 0
     isAnExplosion: 0
     explosionRadius: 0

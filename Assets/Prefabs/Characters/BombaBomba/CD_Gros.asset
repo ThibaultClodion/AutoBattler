@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CD_Gros
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: da448b3f4531e164dacf1b22af35e80f, type: 3}
-  hp: 300
+  hp: 400
   speed: 2
-  acceleration: 3
+  acceleration: 2
   price: 100
   maxMana: 3

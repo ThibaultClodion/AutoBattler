@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CharacterData
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 3b34bfefd8234694c8b28d5001f5de09, type: 3}
-  hp: 100
-  speed: 5
-  acceleration: 8
+  hp: 150
+  speed: 2
+  acceleration: 3
   price: 100
   maxMana: 5

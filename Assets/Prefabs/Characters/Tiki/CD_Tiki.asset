@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CD_Tiki
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2c09e9ace50c3c946b72e6cf9cdfdda4, type: 3}
-  hp: 100
-  speed: 10
-  acceleration: 8
+  hp: 250
+  speed: 3
+  acceleration: 5
   price: 100
-  maxMana: 3
+  maxMana: 5

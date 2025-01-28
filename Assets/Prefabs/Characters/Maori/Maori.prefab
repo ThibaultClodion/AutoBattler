@@ -5139,7 +5139,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: c2af09ae30ec3c74a94fbf9c58b2208c, type: 2}
   attack: {fileID: -5133224649147062329}
   spell: {fileID: 2107619133550704768}
-  rangeOffset: {fileID: 2806490344564784645}
   agent: {fileID: 7387471959027937785}
   animator: {fileID: -5275820677467124889}
   hpSlider: {fileID: 6491921390439039227}
@@ -5232,7 +5231,7 @@ MonoBehaviour:
   cooldown: 1
   range: 3
   blowParticle: {fileID: 4101875209472521888}
-  damage: 100
+  damage: 40
   explosionRadius: 5
   waitBeforeExplode: 0.5
 --- !u!114 &2107619133550704768
@@ -5249,10 +5248,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 1
   animationClip: {fileID: 7400000, guid: 253146434149ee14abd52309ddafcba3, type: 2}
-  cooldown: 1
+  cooldown: 0
   range: 100
   healParticle: {fileID: 6491054421954620423}
-  heal: 100
+  heal: 150
   waitBeforeHeal: 1
 --- !u!1 &2376048353454747040
 GameObject:
@@ -5500,7 +5499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3811020250447567221
 Transform:
   m_ObjectHideFlags: 0

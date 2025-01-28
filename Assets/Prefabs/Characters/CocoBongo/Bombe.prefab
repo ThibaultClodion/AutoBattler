@@ -240,14 +240,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 0
   animationClip: {fileID: 7400000, guid: 43f7521cfa2bd4197a1bdf2f1373392f, type: 2}
-  cooldown: 0.5
+  cooldown: 1
   range: 30
   projectiles: {fileID: 8754708844641326637, guid: f743a66620c9e4566aa9b0e7d00c177e, type: 3}
   throwPosition: {fileID: 6653583862028193761}
   waitingTime: 0.33
   projectileData:
     speed: 30
-    damage: 50
+    damage: 40
     isAutoGuided: 1
     isAnExplosion: 0
     explosionRadius: 0
@@ -276,11 +276,11 @@ MonoBehaviour:
   waitingTime: 0
   projectileData:
     speed: 30
-    damage: 10
+    damage: 50
     isAutoGuided: 1
     isAnExplosion: 1
     explosionRadius: 0
-    spawnGoOnHit: {fileID: 10344046405768469, guid: b17b87042b8e67949b5019c2c8105da5, type: 3}
+    spawnGoOnHit: {fileID: 0}
     particleOnHit: {fileID: 0}
     target: {fileID: 0}
     launcherTeamNumber: 0

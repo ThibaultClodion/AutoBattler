@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: f453165229cd8fe46abd5c6339693d34, type: 3}
   hp: 100
-  speed: 8
-  acceleration: 15
-  price: 150
+  speed: 3
+  acceleration: 3
+  price: 100
   maxMana: 3

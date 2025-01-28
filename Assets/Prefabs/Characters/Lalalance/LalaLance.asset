@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LalaLance
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: f862232a1c5d9764fb63669deb9bcd3d, type: 3}
-  hp: 150
-  speed: 5
-  acceleration: 8
+  hp: 200
+  speed: 3
+  acceleration: 2
   price: 100
   maxMana: 3

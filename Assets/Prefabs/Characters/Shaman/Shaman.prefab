@@ -130,7 +130,6 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 1cb8df3d1ebb12a44af22848a91aab45, type: 2}
   attack: {fileID: -2608856374525509752}
   spell: {fileID: -8254166710552156967}
-  rangeOffset: {fileID: 5991474127433459220}
   agent: {fileID: 1874401829281524172}
   animator: {fileID: 8355746364387179524}
   hpSlider: {fileID: 3409828965331790000}
@@ -220,17 +219,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 0
   animationClip: {fileID: 7400000, guid: 5046fcca3c01d4643854048cc2347fc7, type: 2}
-  cooldown: 0
+  cooldown: 1
   range: 30
   projectiles: {fileID: 8754708844641326637, guid: 2ee6acd744a25ee42bd91a76d0c16efd, type: 3}
   throwPosition: {fileID: 2707848274165097875}
   waitingTime: 0.77
   projectileData:
     speed: 30
-    damage: 50
+    damage: 20
     isAutoGuided: 1
     isAnExplosion: 1
-    explosionRadius: 10
+    explosionRadius: 7
     spawnGoOnHit: {fileID: 0}
     particleOnHit: {fileID: 6948246812728943165, guid: 88c245f0a9ce080419ef27c3e9a4f322, type: 3}
     target: {fileID: 0}
@@ -249,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 1
   animationClip: {fileID: 7400000, guid: 5046fcca3c01d4643854048cc2347fc7, type: 2}
-  cooldown: 0
+  cooldown: 1
   range: 30
   projectiles: {fileID: 8754708844641326637, guid: 2ee6acd744a25ee42bd91a76d0c16efd, type: 3}
   throwPosition: {fileID: 2707848274165097875}

@@ -750,10 +750,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &7758361888610479957
 CapsuleCollider:
@@ -838,11 +838,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 0
   animationClip: {fileID: 7400000, guid: d55eb9a2346f5a9419713247694c2920, type: 2}
-  cooldown: 0.2
+  cooldown: 1
   range: 1.5
   weapons:
   - weapon: {fileID: 7947881543679812160}
-    damage: 50
+    damage: 20
     launcherTeamNumber: 0
 --- !u!114 &4271747372690780416
 MonoBehaviour:
@@ -858,11 +858,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 1
   animationClip: {fileID: 7400000, guid: f49be2bf342aad545bd213a6af3513b9, type: 2}
-  cooldown: 0.2
+  cooldown: 1
   range: 1.5
   weapons:
   - weapon: {fileID: 7947881543679812160}
-    damage: 50
+    damage: 30
     launcherTeamNumber: 0
 --- !u!1 &5992049598185083896
 GameObject:

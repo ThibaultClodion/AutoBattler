@@ -370,10 +370,10 @@ MonoBehaviour:
   range: 2
   weapons:
   - weapon: {fileID: 8289986252697174312}
-    damage: 10
+    damage: 15
     launcherTeamNumber: 0
   - weapon: {fileID: 2020337553020861754}
-    damage: 10
+    damage: 15
     launcherTeamNumber: 0
 --- !u!114 &4898823636821449739
 MonoBehaviour:
@@ -393,10 +393,10 @@ MonoBehaviour:
   range: 2
   weapons:
   - weapon: {fileID: 8289986252697174312}
-    damage: 10
+    damage: 20
     launcherTeamNumber: 0
   - weapon: {fileID: 2020337553020861754}
-    damage: 10
+    damage: 20
     launcherTeamNumber: 0
 --- !u!1 &1358839893201960094
 GameObject:

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CD_Maori
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2bc2ba7964cb1c2449ed38c1785d1dcf, type: 3}
-  hp: 500
+  hp: 600
   speed: 2
-  acceleration: 5
-  price: 200
+  acceleration: 2
+  price: 100
   maxMana: 3

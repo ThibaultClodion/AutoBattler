@@ -772,14 +772,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 0
   animationClip: {fileID: 7400000, guid: 54b98c8fef59a8a479d3436167b7bf55, type: 2}
-  cooldown: 0
+  cooldown: 0.5
   range: 50
   projectiles: {fileID: 3798023206989876807, guid: 1a658b99e1187284fb823eb6370cafb7, type: 3}
   throwPosition: {fileID: 6702070235069361856}
   waitingTime: 0.75
   projectileData:
     speed: 50
-    damage: 100
+    damage: 20
     isAutoGuided: 1
     isAnExplosion: 0
     explosionRadius: 0
@@ -801,14 +801,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 1
   animationClip: {fileID: 7400000, guid: 54b98c8fef59a8a479d3436167b7bf55, type: 2}
-  cooldown: 0
+  cooldown: 0.5
   range: 50
   projectiles: {fileID: 2039599685071923260, guid: 8145e39add7d1a24dab7f12a1dec5ba6, type: 3}
   throwPosition: {fileID: 6702070235069361856}
   waitingTime: 0.75
   projectileData:
     speed: 50
-    damage: 100
+    damage: 15
     isAutoGuided: 0
     isAnExplosion: 0
     explosionRadius: 0

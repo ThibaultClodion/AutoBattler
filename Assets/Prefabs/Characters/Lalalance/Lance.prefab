@@ -264,11 +264,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 0
   animationClip: {fileID: 7400000, guid: 31020b0b3c4e94f2fbba91a25d7790bd, type: 2}
-  cooldown: 0.5
+  cooldown: 1
   range: 2
   weapons:
   - weapon: {fileID: 8357969179698913812}
-    damage: 0
+    damage: 35
     launcherTeamNumber: 0
 --- !u!114 &6406588127765231038
 MonoBehaviour:
@@ -284,11 +284,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpell: 1
   animationClip: {fileID: 7400000, guid: df8100317cb9d4fdbbde80cdcb75663f, type: 2}
-  cooldown: 0.5
+  cooldown: 1
   range: 2
   weapons:
   - weapon: {fileID: 8357969179698913812}
-    damage: 0
+    damage: 50
     launcherTeamNumber: 0
 --- !u!136 &7985414709890170644
 CapsuleCollider:
