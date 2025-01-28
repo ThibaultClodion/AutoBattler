@@ -240,8 +240,8 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 43f7521cfa2bd4197a1bdf2f1373392f, type: 2}
   cooldown: 0
   range: 0
-  projectiles: {fileID: 0}
-  throwPosition: {fileID: 0}
+  projectiles: {fileID: 8754708844641326637, guid: f743a66620c9e4566aa9b0e7d00c177e, type: 3}
+  throwPosition: {fileID: 6653583862028193761}
   waitingTime: 0
   projectileData:
     speed: 0
@@ -269,8 +269,8 @@ MonoBehaviour:
   animationClip: {fileID: 7400000, guid: 43f7521cfa2bd4197a1bdf2f1373392f, type: 2}
   cooldown: 0
   range: 0
-  projectiles: {fileID: 0}
-  throwPosition: {fileID: 0}
+  projectiles: {fileID: 8754708844641326637, guid: f743a66620c9e4566aa9b0e7d00c177e, type: 3}
+  throwPosition: {fileID: 6653583862028193761}
   waitingTime: 0
   projectileData:
     speed: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
     isAutoGuided: 0
     isAnExplosion: 0
     explosionRadius: 0
-    spawnGoOnHit: {fileID: 0}
+    spawnGoOnHit: {fileID: 10344046405768469, guid: e5d32390368334b78b98d9b9ea52586c, type: 3}
     particleOnHit: {fileID: 0}
     target: {fileID: 0}
     launcherTeamNumber: 0
