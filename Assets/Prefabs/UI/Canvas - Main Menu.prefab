@@ -1925,7 +1925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 7604685607482546288}
   sceneLoader: {fileID: 7589715776797400296}
-  scene: {fileID: 102900000, guid: af110f455cf31b14983cfc7329223118, type: 3}
+  sceneName: Level4
 --- !u!1 &2319459506814002156
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,7 +2410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 556944981587160946}
   sceneLoader: {fileID: 7589715776797400296}
-  scene: {fileID: 102900000, guid: 6f3671ea49571974d91480d1d4d4d03f, type: 3}
+  sceneName: Level3
 --- !u!1 &2870429727198961462
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,7 +5080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e144cc3c0383c714eab7802c64897e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: {fileID: 102900000, guid: c7adebdfcd4f9d24aa5b2e43f55fb6af, type: 3}
+  sceneName: Level1
 --- !u!1 &5736068869544488925
 GameObject:
   m_ObjectHideFlags: 0
@@ -7147,7 +7147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 3056845482699250568}
   sceneLoader: {fileID: 7589715776797400296}
-  scene: {fileID: 102900000, guid: 2f9082e0c7f2fd54ea5923b942ff0115, type: 3}
+  sceneName: Level5
 --- !u!1 &7623869120545961259
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,7 +7474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 7967292645434356931}
   sceneLoader: {fileID: 7589715776797400296}
-  scene: {fileID: 102900000, guid: c7adebdfcd4f9d24aa5b2e43f55fb6af, type: 3}
+  sceneName: Level1
 --- !u!1 &8085630343899298940
 GameObject:
   m_ObjectHideFlags: 0
@@ -7960,7 +7960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle: {fileID: 6739066760478422600}
   sceneLoader: {fileID: 7589715776797400296}
-  scene: {fileID: 102900000, guid: ea5e749dd1d884a4181fbabb8d9d0dcf, type: 3}
+  sceneName: Level2
 --- !u!1 &8616303283229797793
 GameObject:
   m_ObjectHideFlags: 0

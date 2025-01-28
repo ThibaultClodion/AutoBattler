@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +5,7 @@ public class ToggleSceneChanger : MonoBehaviour
 {
     [SerializeField] private Toggle toggle;
     [SerializeField] private SceneLoader sceneLoader;
-    [SerializeField] private SceneAsset scene;
+    [SerializeField] private string sceneName;
 
     void Start()
     {
@@ -17,7 +16,7 @@ public class ToggleSceneChanger : MonoBehaviour
     {
         if(change.isOn)
         {
-            sceneLoader.ChangeSceneToLoad(scene);
+            sceneLoader.ChangeSceneToLoad(sceneName);
         }
     }
 }

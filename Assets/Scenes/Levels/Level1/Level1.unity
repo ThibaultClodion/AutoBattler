@@ -1039,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ----- Gameplay -----
       objectReference: {fileID: 0}
+    - target: {fileID: 4932535366155399814, guid: d5b6b153aa5912a4a866999ea74089cf, type: 3}
+      propertyPath: sceneName
+      value: MenuScene
+      objectReference: {fileID: 0}
     - target: {fileID: 5474913066075766919, guid: d5b6b153aa5912a4a866999ea74089cf, type: 3}
       propertyPath: startingMoney
       value: 200
