@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioUI : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class AudioUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        background.volume = (backgroundVolume.value/100)*(globalVolume.value/100);
+        if(SceneManager.GetActiveScene().name == "MenuScene") {
+            background.volume = (backgroundVolume.value/100)*(globalVolume.value/100);
+        }
     }
 }

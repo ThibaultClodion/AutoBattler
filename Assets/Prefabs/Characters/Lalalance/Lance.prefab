@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpell: 1
-  animationClip: {fileID: 7400000, guid: 31020b0b3c4e94f2fbba91a25d7790bd, type: 2}
+  animationClip: {fileID: 7400000, guid: df8100317cb9d4fdbbde80cdcb75663f, type: 2}
   cooldown: 0.5
   range: 2
   weapons:
