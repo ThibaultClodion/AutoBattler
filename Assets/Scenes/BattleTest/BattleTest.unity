@@ -923,6 +923,14 @@ PrefabInstance:
       propertyPath: unitVisualization
       value: 
       objectReference: {fileID: 502262723}
+    - target: {fileID: 5474913066075766919, guid: d5b6b153aa5912a4a866999ea74089cf, type: 3}
+      propertyPath: payableUnits.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474913066075766919, guid: d5b6b153aa5912a4a866999ea74089cf, type: 3}
+      propertyPath: 'payableUnits.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8393857913332706120, guid: 67733eb81c8024d2797c9a36d9495aaa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
