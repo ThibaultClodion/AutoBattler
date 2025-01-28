@@ -268,7 +268,7 @@ MonoBehaviour:
   range: 2
   weapons:
   - weapon: {fileID: 8357969179698913812}
-    damage: 100
+    damage: 0
     launcherTeamNumber: 0
 --- !u!114 &6406588127765231038
 MonoBehaviour:
@@ -288,7 +288,7 @@ MonoBehaviour:
   range: 2
   weapons:
   - weapon: {fileID: 8357969179698913812}
-    damage: 100
+    damage: 0
     launcherTeamNumber: 0
 --- !u!136 &7985414709890170644
 CapsuleCollider:
