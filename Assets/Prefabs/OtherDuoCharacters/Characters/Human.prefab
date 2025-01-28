@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3863569867520463345, guid: 624a624d30195e94281130931e271dbc, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863569867520463345, guid: 624a624d30195e94281130931e271dbc, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 4855325787555676698, guid: 624a624d30195e94281130931e271dbc, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -62,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5860540071810556225, guid: 624a624d30195e94281130931e271dbc, type: 3}
       propertyPath: isKing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5913587467163417545, guid: 624a624d30195e94281130931e271dbc, type: 3}
       propertyPath: m_Name
