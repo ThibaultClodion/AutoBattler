@@ -12,8 +12,10 @@ public class Explosion : Attack
 
     public override void Launch(Character launcher, Transform target, Animator animator)
     {
-        base.Launch(launcher, target, animator);
-        launcherTeamNumber = launcher.teamNumber;
+        if(launcher != null) {
+            base.Launch(launcher, target, animator);
+            launcherTeamNumber = launcher.teamNumber;
+        }
 
         StartCoroutine(Explode());
     }
@@ -21,8 +23,9 @@ public class Explosion : Attack
     private IEnumerator Explode()
     {
         yield return new WaitForSeconds(waitBeforeExplode);
-
-        blowParticle.Play();
+        if(blowParticle != null) {
+            blowParticle.Play();
+        }
 
         Collider[] hitten = Physics.OverlapSphere(transform.position, explosionRadius);
 
