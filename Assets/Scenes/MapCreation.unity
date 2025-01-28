@@ -5047,6 +5047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicMap
       objectReference: {fileID: 0}
+    - target: {fileID: 6216583399883597979, guid: 826afa7fc7e934f91ad2509cfc136905, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 977f005bcb75e4cb7820e4193b99eab0, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

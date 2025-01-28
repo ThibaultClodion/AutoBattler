@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpell: 0
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 9a5c4d59817454be5a2837578efc15b9, type: 2}
   cooldown: 0
   range: 0
   weapons: []
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpell: 1
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 9a5c4d59817454be5a2837578efc15b9, type: 2}
   cooldown: 0
   range: 0
   blowParticle: {fileID: 0}
